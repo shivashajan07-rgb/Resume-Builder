@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 70%;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .om {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .om input {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .ed {
+            display: flex;
+            gap: 2%;
+            flex-wrap: wrap;
+        }
+
+        .ed .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .com {
+            display: flex;
+            gap: 2%;
+            flex-wrap: wrap;
+        }
+
+        .com .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .btn1 {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn1:hover {
+            background-color: #1976D2;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 36px;
+            margin: 20px 0;
+        }
+
+        h2 {
+            color: #2196F3;
+            font-size: 24px;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #2196F3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Resume Builder</h1>
+
+    <form action="{% url 'resume' %}" method="post" class="form-container">
+        {% csrf_token %}
+
+        <!-- ===================PERSONAL INFORMATION====================== -->
+        <h2>Personal Information</h2>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ resume_data.name }}">
+        </div>
+        <div class="form-group">
+            <label for="about">About:</label>
+            <input type="text" id="about" name="about" value="{{ resume_data.about }}">
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" id="age" name="age" value="{{ resume_data.age }}">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ resume_data.email }}">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" value="{{ resume_data.phone }}">
+        </div>
+        <div class="form-group">
+            <label for="skills">Skills:</label>
+            <div class="om">
+                <input type="text" name="skill1" value="{{ resume_data.skill1 }}">
+                <input type="text" name="skill2" value="{{ resume_data.skill2 }}">
+                <input type="text" name="skill3" value="{{ resume_data.skill3 }}">
+                <input type="text" name="skill4" value="{{ resume_data.skill4 }}">
+                <input type="text" name="skill5" value="{{ resume_data.skill5 }}">
+            </div>
+        </div>
+
+        <!-- =====================EDUCATION SECTION ================== -->
+        <h2>Education</h2>
+        
+        <!-- -----EDUCATION 1----- -->
+        <div class="form-group">
+            <label>Education 1:</label>
+        </div>
+        <div class="ed">
+            <div class="form-group">
+                <label for="degree1">Degree:</label>
+                <input type="text" id="degree1" name="degree1" value="{{ resume_data.degree1 }}">
+            </div>
+            <div class="form-group">
+                <label for="college1">College:</label>
+                <input type="text" id="college1" name="college1" value="{{ resume_data.college1 }}">
+            </div>
+            <div class="form-group">
+                <label for="year1">Year:</label>
+                <input type="text" id="year1" name="year1" value="{{ resume_data.year1 }}">
+            </div>
+        </div>
+
+        <!-- -----EDUCATION 2----- -->
+        <div class="form-group">
+            <label>Education 2:</label>
+        </div>
+        <div class="ed">
+            <div class="form-group">
+                <label for="degree2">Degree:</label>
+                <input type="text" id="degree2" name="degree2" value="{{ resume_data.degree2 }}">
+            </div>
+            <div class="form-group">
+                <label for="college2">College:</label>
+                <input type="text" id="college2" name="college2" value="{{ resume_data.college2 }}">
+            </div>
+            <div class="form-group">
+                <label for="year2">Year:</label>
+                <input type="text" id="year2" name="year2" value="{{ resume_data.year2 }}">
+            </div>
+        </div>
+
+        <!-- -----EDUCATION 3----- -->
+        <div class="form-group">
+            <label>Education 3:</label>
+        </div>
+        <div class="ed">
+            <div class="form-group">
+                <label for="degree3">Degree:</label>
+                <input type="text" id="degree3" name="degree3" value="{{ resume_data.degree3 }}">
+            </div>
+            <div class="form-group">
+                <label for="college3">College:</label>
+                <input type="text" id="college3" name="college3" value="{{ resume_data.college3 }}">
+            </div>
+            <div class="form-group">
+                <label for="year3">Year:</label>
+                <input type="text" id="year3" name="year3" value="{{ resume_data.year3 }}">
+            </div>
+        </div>
+
+        <!-- ================LANGUAGES======================= -->
+        <div class="form-group">
+            <label for="languages">Languages:</label>
+            <div class="om">
+                <input type="text" name="lang1" value="{{ resume_data.lang1 }}">
+                <input type="text" name="lang2" value="{{ resume_data.lang2 }}">
+                <input type="text" name="lang3" value="{{ resume_data.lang3 }}">
+            </div>
+        </div>
+
+        <!-- =====================PROJECT SECTION=================== -->
+        <h2>Projects</h2>
+
+        <!-- PROJECT 1 -->
+        <div class="form-group">
+            <label>Project 1:</label>
+        </div>
+        <div class="com">
+            <div class="form-group">
+                <label for="project1">Project Title:</label>
+                <input type="text" id="project1" name="project1" value="{{ resume_data.project1 }}">
+            </div>
+            <div class="form-group">
+                <label for="durat1">Duration:</label>
+                <input type="text" id="durat1" name="durat1" value="{{ resume_data.durat1 }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="desc1">Description:</label>
+            <input type="text" id="desc1" name="desc1" value="{{ resume_data.desc1 }}">
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="form-group">
+            <label>Project 2:</label>
+        </div>
+        <div class="com">
+            <div class="form-group">
+                <label for="project2">Project Title:</label>
+                <input type="text" id="project2" name="project2" value="{{ resume_data.project2 }}">
+            </div>
+            <div class="form-group">
+                <label for="durat2">Duration:</label>
+                <input type="text" id="durat2" name="durat2" value="{{ resume_data.durat2 }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="desc2">Description:</label>
+            <input type="text" id="desc2" name="desc2" value="{{ resume_data.desc2 }}">
+        </div>
+
+        <!-- =======================EXPERIENCE SECTION===================== -->
+        <h2>Work Experience</h2>
+        
+        <!-- EXPERIENCE 1 -->
+        <div class="form-group">
+            <label>Experience 1:</label>
+        </div>
+        <div class="com">
+            <div class="form-group">
+                <label for="company1">Company Name:</label>
+                <input type="text" id="company1" name="company1" value="{{ resume_data.company1 }}">
+            </div>
+            <div class="form-group">
+                <label for="post1">Post:</label>
+                <input type="text" id="post1" name="post1" value="{{ resume_data.post1 }}">
+            </div>
+            <div class="form-group">
+                <label for="duration1">Duration:</label>
+                <input type="text" id="duration1" name="duration1" value="{{ resume_data.duration1 }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lin11">Description:</label>
+            <input type="text" id="lin11" name="lin11" value="{{ resume_data.lin11 }}">
+        </div>
+
+        <!-- EXPERIENCE 2 -->
+        <div class="form-group">
+            <label>Experience 2:</label>
+        </div>
+        <div class="com">
+            <div class="form-group">
+                <label for="company2">Company Name:</label>
+                <input type="text" id="company2" name="company2" value="{{ resume_data.company2 }}">
+            </div>
+            <div class="form-group">
+                <label for="post2">Post:</label>
+                <input type="text" id="post2" name="post2" value="{{ resume_data.post2 }}">
+            </div>
+            <div class="form-group">
+                <label for="duration2">Duration:</label>
+                <input type="text" id="duration2" name="duration2" value="{{ resume_data.duration2 }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lin21">Description:</label>
+            <input type="text" id="lin21" name="lin21" value="{{ resume_data.lin21 }}">
+        </div>
+
+        <!-- ==========================ACHIEVEMENTS================= -->
+        <h2>Achievements</h2>
+        <div class="form-group">
+            <label for="ach1">First:</label>
+            <input type="text" id="ach1" name="ach1" value="{{ resume_data.ach1 }}">
+        </div>
+        <div class="form-group">
+            <label for="ach2">Second:</label>
+            <input type="text" id="ach2" name="ach2" value="{{ resume_data.ach2 }}">
+        </div>
+        <div class="form-group">
+            <label for="ach3">Third:</label>
+            <input type="text" id="ach3" name="ach3" value="{{ resume_data.ach3 }}">
+        </div>
+
+        <button type="submit" class="btn1">Generate Resume</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ resume.name }} - Resume Builder </title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2196F3;
+        }
+
+        .header h1 {
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 32px;
+        }
+
+        .header h3 {
+            text-transform: uppercase;
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+        }
+
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .left {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .right {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            border-left: 2px solid #2196F3;
+        }
+
+        h2 {
+            color: #2196F3;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            font-size: 20px;
+            border-bottom: 2px solid #2196F3;
+        }
+
+        p {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        .btn1 {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn1:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mn" class="container">
+        <div class="header">
+            <h1>{{ resume.name }}</h1>
+            <h3>{{ resume.about }}</h3>
+        </div>
+        <div class="main">
+            <div class="left">
+                <h2>Personal Information</h2>
+                <p><strong>Name:</strong> {{ resume.name }}</p>
+                <p><strong>Age:</strong> {{ resume.age }}</p>
+                <p><strong>Email:</strong> {{ resume.email }}</p>
+                <p><strong>Phone:</strong> {{ resume.phone }}</p>
+
+                <h2>Skills</h2>
+                <ul>
+                    {% if resume.skill1 %}<li>{{ resume.skill1 }}</li>{% endif %}
+                    {% if resume.skill2 %}<li>{{ resume.skill2 }}</li>{% endif %}
+                    {% if resume.skill3 %}<li>{{ resume.skill3 }}</li>{% endif %}
+                    {% if resume.skill4 %}<li>{{ resume.skill4 }}</li>{% endif %}
+                    {% if resume.skill5 %}<li>{{ resume.skill5 }}</li>{% endif %}
+                </ul>
+
+                <h2>Education</h2>
+                {% if resume.degree1 %}
+                <h3>{{ resume.degree1 }}</h3>
+                <p>{{ resume.college1 }}</p>
+                <p>{{ resume.year1 }}</p>
+                <br>
+                {% endif %}
+                {% if resume.degree2 %}
+                <h3>{{ resume.degree2 }}</h3>
+                <p>{{ resume.college2 }}</p>
+                <p>{{ resume.year2 }}</p>
+                <br>
+                {% endif %}
+                {% if resume.degree3 %}
+                <h3>{{ resume.degree3 }}</h3>
+                <p>{{ resume.college3 }}</p>
+                <p>{{ resume.year3 }}</p>
+                {% endif %}
+
+                <h2>Languages</h2>
+                <ul>
+                    {% if resume.lang1 %}<li>{{ resume.lang1 }}</li>{% endif %}
+                    {% if resume.lang2 %}<li>{{ resume.lang2 }}</li>{% endif %}
+                    {% if resume.lang3 %}<li>{{ resume.lang3 }}</li>{% endif %}
+                </ul>
+            </div>
+            <div class="right">
+                <h2>Projects</h2>
+                {% if resume.project1 %}
+                <h3>{{ resume.project1 }}</h3>
+                <p><strong>Duration:</strong> {{ resume.durat1 }}</p>
+                <ul>
+                    <li>{{ resume.desc1 }}</li>
+                </ul>
+                <br>
+                {% endif %}
+                {% if resume.project2 %}
+                <h3>{{ resume.project2 }}</h3>
+                <p><strong>Duration:</strong> {{ resume.durat2 }}</p>
+                <ul>
+                    <li>{{ resume.desc2 }}</li>
+                </ul>
+                <br>
+                {% endif %}
+
+                <h2>Work Experience</h2>
+                {% if resume.company1 %}
+                <h3>{{ resume.company1 }}</h3>
+                <p><strong>Position:</strong> {{ resume.post1 }}</p>
+                <p><strong>Duration:</strong> {{ resume.duration1 }}</p>
+                <ul>
+                    <li>{{ resume.lin11 }}</li>
+                </ul>
+                <br>
+                {% endif %}
+                {% if resume.company2 %}
+                <h3>{{ resume.company2 }}</h3>
+                <p><strong>Position:</strong> {{ resume.post2 }}</p>
+                <p><strong>Duration:</strong> {{ resume.duration2 }}</p>
+                <ul>
+                    <li>{{ resume.lin21 }}</li>
+                </ul>
+                <br>
+                {% endif %}
+
+                <h2>Achievements</h2>
+                <ul>
+                    {% if resume.ach1 %}<li>{{ resume.ach1 }}</li>{% endif %}
+                    {% if resume.ach2 %}<li>{{ resume.ach2 }}</li>{% endif %}
+                    {% if resume.ach3 %}<li>{{ resume.ach3 }}</li>{% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="generatePDF('mn')" class="btn1">Download PDF</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script>
+        function generatePDF(containerId) {
+            const element = document.getElementById(containerId);
+            
+            const opt = {
+                margin: 10,
+                filename: 'resume.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().from(element).set(opt).save();
+        }
+    </script>
+</body>
+
+</html>
